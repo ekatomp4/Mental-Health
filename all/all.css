@@ -1,0 +1,43 @@
+/* vars */
+
+:root {
+    --bs-border-radius: 20px;
+    --bs-font-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --bs-primary-rgb: #9EE788;
+}
+
+/* Templating and fixes */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+section {
+    margin-bottom: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        margin-bottom: 5vh;
+        padding: 0 5%;
+    }
+}
+
+a, button {
+    cursor: pointer;
+}
+
+/* rounded corners class management stuff */
+
+.rounded {
+    border-radius: var(--bs-border-radius)
+}
+
+/* bg primary color */
+
+.bg-primary {
+    background-color: var(--bs-primary-rgb)
+}
