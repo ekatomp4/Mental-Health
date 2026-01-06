@@ -64,9 +64,39 @@ function loadFonts() {
 }
 
 
+function insertLoader() {
+    const loaderDiv = document.createElement('div');
+    loaderDiv.id = 'loader';
+
+    const loaderStyle = document.createElement('style');
+    loaderStyle.innerHTML = `
+    #loader {
+        transition: all 0.5s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 9999;
+        pointer-events: none;
+    }
+    .hidden {
+        pointer-events: none;
+        opacity: 0;
+    }
+    `;
+
+    document.body.prepend(loaderDiv);
+    document.head.appendChild(loaderStyle);
+}
+
 function loadPage() {
 
+    insertLoader();
+
     try {
+        
         insertNav();
 
         loadFonts();
@@ -79,6 +109,16 @@ function loadPage() {
     }
 
     console.log("loaded");
+
+
+    const loaderDiv = document.getElementById('loader');
+    setTimeout(() => {
+        loaderDiv.classList.add('hidden') 
+    }, 100)
+    setTimeout(() => {
+        loaderDiv.remove();
+    }, 5000);
+    
 }
 
 loadPage();

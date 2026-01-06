@@ -3,7 +3,8 @@
 :root {
     --bs-border-radius: 20px;
     --bs-font-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --bs-primary-rgb: #9EE788;
+    
+    --primary: #339961;
 }
 
 /* Templating and fixes */
@@ -19,6 +20,11 @@ section {
     margin-bottom: 10vh;
 }
 
+.navbar {
+    z-index: 100 !important;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
 @media screen and (max-width: 768px) {
     section {
         margin-bottom: 5vh;
@@ -28,16 +34,27 @@ section {
 
 a, button {
     cursor: pointer;
+    user-select: none !important;
 }
+
 
 /* rounded corners class management stuff */
 
 .rounded {
     border-radius: var(--bs-border-radius)
 }
+.shadowed-soft {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+.shadowed-medium {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5) !important;
+}
+.shadowed-hard {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
 
 /* bg primary color */
-
 .bg-primary {
-    background-color: var(--bs-primary-rgb)
+    background-color: var(--primary) !important;
 }
+
