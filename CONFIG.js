@@ -1,26 +1,52 @@
-const CONFIG = {
-   PATHS: ['index', 'home', 'about', 'blogs'], 
-   LINKS: [
-        {
-            rel: 'preconnect',
-            href: 'https://fonts.googleapis.com'
-        },
-        {
-            rel: 'preconnect',
-            href: 'https://fonts.gstatic.com'
-        },
-        {
-            rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap'
-        },
+const pages = [
+  {
+    name: "Home",
+    paths: ["/", "/index.html"],
+    pagePath: "/pages/home",
+    title: "MentalPanda",
+    hasCss: true,
+    hasJs: false,
+  },
+  {
+    name: "Blogs",
+    paths: ["/blogs"],
+    pagePath: "/pages/blogs",
+    hasCss: true,
+    hasJs: true,
+  },
+  {
+    name: "About",
+    paths: ["/about"],
+    pagePath: "/pages/about",
+    hasCss: true,
+    hasJs: true,
+  },
+  {
+    name: "Chat",
+    paths: ["/chat"],
+    pagePath: "/pages/chat",
+    hasCss: true,
+    hasJs: true,
+  },
+];
 
-        // preload all.js
-        {
-            rel: 'preload',
-            href: '../../all/all.css',
-            as: 'style'
-        }
-    ]
+function getPageByName(name) {
+  return pages.find((page) => page.name.toLowerCase() === name.toLowerCase());
 }
 
-export default CONFIG
+function createNavEntry(page) {
+  return {
+    label: page.name,
+    to: page.paths[0],
+  };
+}
+
+export const CONFIG = {
+  pages,
+  nav: [
+    createNavEntry(getPageByName("Home")),
+    createNavEntry(getPageByName("Blogs")),
+    createNavEntry(getPageByName("About")),
+    createNavEntry(getPageByName("Chat"))
+  ],
+};

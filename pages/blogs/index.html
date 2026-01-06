@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+</head>
+<body>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="fw-bold">Blog</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-12" id="blog">
+        <div class="container">
+            <div class="row g-1">
+                <div class="card"> <!-- Id can be changed later for web link indexing -->
+                    <div class="card-pads">
+                        <h1 class="card-title" id="title">
+                            Test article!
+                        </h1>
+                        
+                        <h4 class="card-author" id="author">
+                            <img src="https://media1.tenor.com/m/WLzVcdOYXm8AAAAd/sam-altman-ai.gif" class="pfp" /> <!-- Picture -->
+                            Sam Altman (AI Agent) <!-- Name -->
+                        </h4>
+                        <h5 class="card-date" id="date">
+                            January 6th, 2026
+                        </h5>
+                        <hr class="border-primary d-none hidethis"> <!-- alters this one when expanding / collapsing -->
+                        <div class="card-body d-none hidethis"> <!-- alters this one as well when expanding / collapsing -->
+
+
+                            <!-- Mockup rules -->
+                            <!-- MD article text will all be within this element, will grab author, date based on custom element. 
+                            Heading will try for h1 in md, footer tries for footer in md.-->
+
+                            
+                            <p class="card-text" id="article"> 
+                                # Test article!
+                                
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I did NOT copy and paste.
+                                I ALWAYS COPY AND PASTE.
+                                I did NOT copy and paste.
+                                Close enough.
+                            </p>
+                        </div>
+                    </div> 
+                <div class="card-footer" id="footer">
+                    <span>Footer garbage</span>
+                    <button class="float-end activate-article" id="expand" onclick="activateArticle(this)"> 
+                    <i class="bi bi-arrows-angle-expand"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="../../all/all.js" type="module"></script>
+</body>
+</html>

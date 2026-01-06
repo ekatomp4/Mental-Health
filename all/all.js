@@ -2,10 +2,9 @@ import CONFIG from "../CONFIG.js";
 
 // loaders
 
-
 function insertNav() {
-    const nav = document.createElement('nav');
-    nav.innerHTML = `
+	const nav = document.createElement("nav");
+	nav.innerHTML = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">MentalPanda</a>
@@ -22,54 +21,54 @@ function insertNav() {
         </div>
     </nav>
     `;
-    document.body.prepend(nav);
+	document.body.prepend(nav);
 }
 
 function insertAll() {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = '../../all/all.css'
-    document.getElementsByTagName('head')[0].appendChild(link);
+	var link = document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.href = "../../all/all.css";
+	document.getElementsByTagName("head")[0].appendChild(link);
 }
 
 function injectBootstrap() {
-    // css
-    const BSLink = document.createElement('link');
-    BSLink.rel = 'stylesheet';
-    BSLink.type = 'text/css';
-    BSLink.href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
-    document.getElementsByTagName('head')[0].appendChild(BSLink);
-    // script
-    const BSScript = document.createElement('script');
-    BSScript.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
-    document.getElementsByTagName('body')[0].appendChild(BSScript);
+	// css
+	const BSLink = document.createElement("link");
+	BSLink.rel = "stylesheet";
+	BSLink.type = "text/css";
+	BSLink.href =
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css";
+	document.getElementsByTagName("head")[0].appendChild(BSLink);
+	// script
+	const BSScript = document.createElement("script");
+	BSScript.src =
+		"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
+	document.getElementsByTagName("body")[0].appendChild(BSScript);
 }
-
 
 // MAIN LOADER
 
 function loadFonts() {
-    const LINKS = CONFIG.LINKS;
+	const LINKS = CONFIG.LINKS;
 
-    LINKS.forEach(link => {
-        const LINK = document.createElement('link');
+	LINKS.forEach((link) => {
+		const LINK = document.createElement("link");
 
-        for(const [key, value] of Object.entries(link)) {
-            LINK[key] = value;
-        }
+		for (const [key, value] of Object.entries(link)) {
+			LINK[key] = value;
+		}
 
-        document.getElementsByTagName('head')[0].appendChild(LINK);
-    });
+		document.getElementsByTagName("head")[0].appendChild(LINK);
+	});
 }
 
-
 function insertLoader() {
-    const loaderDiv = document.createElement('div');
-    loaderDiv.id = 'loader';
+	const loaderDiv = document.createElement("div");
+	loaderDiv.id = "loader";
 
-    const loaderStyle = document.createElement('style');
-    loaderStyle.innerHTML = `
+	const loaderStyle = document.createElement("style");
+	loaderStyle.innerHTML = `
     #loader {
         transition: all 0.5s ease-in-out;
         position: fixed;
@@ -87,65 +86,59 @@ function insertLoader() {
     }
     `;
 
-    document.body.prepend(loaderDiv);
-    document.head.appendChild(loaderStyle);
+	document.body.prepend(loaderDiv);
+	document.head.appendChild(loaderStyle);
 }
 
 function loadPage() {
+	insertLoader();
 
-    insertLoader();
+	try {
+		insertNav();
 
-    try {
-        
-        insertNav();
+		loadFonts();
 
-        loadFonts();
+		injectBootstrap();
 
-        injectBootstrap();
+		insertAll();
+	} catch (error) {
+		throw `Error loading loader module: ${error}`;
+	}
 
-        insertAll();
-    } catch (error) {
-        throw(`Error loading loader module: ${error}`);
-    }
+	console.log("loaded");
 
-    console.log("loaded");
-
-
-    const loaderDiv = document.getElementById('loader');
-    setTimeout(() => {
-        loaderDiv.classList.add('hidden') 
-    }, 100)
-    setTimeout(() => {
-        loaderDiv.remove();
-    }, 5000);
-    
+	const loaderDiv = document.getElementById("loader");
+	setTimeout(() => {
+		loaderDiv.classList.add("hidden");
+	}, 100);
+	setTimeout(() => {
+		loaderDiv.remove();
+	}, 5000);
 }
 
 loadPage();
 
-
 // ROUTER
 
-
-let currentRoute = window.location.pathname.split('/').pop().replace('.html', '') || "index";
-console.log('Current route:', currentRoute);
+let currentRoute =
+	window.location.pathname.split("/").pop().replace(".html", "") || "index";
+console.log("Current route:", currentRoute);
 
 const PATHS = CONFIG.PATHS;
 window.routeTo = (name) => {
+	if (name === "index") {
+		name = "home";
+	}
 
-    if(name === 'index') {
-        name = 'home';
-    }
+	if (!PATHS.includes(name)) {
+		throw new Error(`Route ${name} does not exist`);
+	}
 
-    if(!PATHS.includes(name)) {
-        throw new Error(`Route ${name} does not exist`);
-    }
+	if (name === currentRoute) {
+		console.log(`Route ${name} already loaded`);
+		return;
+	}
 
-    if (name === currentRoute) {
-        console.log(`Route ${name} already loaded`);
-        return;
-    }
-
-    const resolvedPath = `../../pages/${name}/${name}.html`;
-    window.location.replace(resolvedPath);
+	const resolvedPath = `../../pages/${name}`;
+	window.location.replace(resolvedPath);
 };
