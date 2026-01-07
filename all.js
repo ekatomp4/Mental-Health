@@ -36,8 +36,109 @@ function hideAllPages() {
   }
 }
 
+function disableAllPageStyles(except) {
+  document
+    .querySelectorAll('link[data-page]')
+    .forEach(link => {
+      if (link.dataset.page === except) return;
+      link.disabled = true;
+    });
+}
+
+function enablePageStyles(pageName) {
+  document
+    .querySelectorAll(`link[data-page="${pageName}"]`)
+    .forEach(link => {
+      link.disabled = false;
+    });
+}
+
+function prependCSS(css, prefix) {
+  // Remove comments
+  css = css.replace(/\/\*[\s\S]*?\*\//g, '');
+
+  const result = [];
+  let i = 0;
+
+  while (i < css.length) {
+    // Skip whitespace
+    if (/\s/.test(css[i])) {
+      i++;
+      continue;
+    }
+
+    // Check for @media or @keyframes or other at-rules
+    const character = css.slice(i, i + 1);
+    if (character=== '@' || css.slice(i, i + 4) === ':root') {
+      // Find the full media block
+      const start = i;
+      let braceCount = 0;
+      let j = css.indexOf('{', i);
+      braceCount++;
+      j++;
+
+      while (braceCount > 0 && j < css.length) {
+        if (css[j] === '{') braceCount++;
+        if (css[j] === '}') braceCount--;
+        j++;
+      }
+
+      const mediaBlock = css.slice(start, j);
+      // Split into header and inner content
+      const headerEnd = mediaBlock.indexOf('{');
+      const header = mediaBlock.slice(0, headerEnd + 1);
+      const inner = mediaBlock.slice(headerEnd + 1, -1);
+      const innerPrefixed = prependCSS(inner, prefix);
+      result.push(`${header}\n${innerPrefixed}\n}`);
+      i = j;
+      continue;
+    }
+
+    // Otherwise, parse normal selector block
+    const nextOpen = css.indexOf('{', i);
+    if (nextOpen === -1) break;
+    const nextClose = findMatchingBrace(css, nextOpen);
+    if (nextClose === -1) break;
+
+    const selectorText = css.slice(i, nextOpen).trim();
+    const bodyText = css.slice(nextOpen + 1, nextClose).trim();
+
+    const selectors = selectorText
+      .split(',')
+      .map(sel => sel.trim())
+      .filter(Boolean)
+      .map(sel => `${prefix} ${sel}`)
+      .join(', ');
+
+    result.push(`${selectors} { ${bodyText} }`);
+
+    i = nextClose + 1;
+  }
+
+  return result.join('\n');
+}
+
+/**
+ * Find matching closing brace for a given opening brace index
+ * @param {string} str
+ * @param {number} start
+ * @returns {number} index of matching }
+ */
+function findMatchingBrace(str, start) {
+  let count = 0;
+  for (let i = start; i < str.length; i++) {
+    if (str[i] === '{') count++;
+    if (str[i] === '}') count--;
+    if (count === 0) return i;
+  }
+  return -1;
+}
+
 async function loadPage(page) {
   const container = pageContainerElements[page.name];
+
+  // enablePageStyles(page.name);
+  // disableAllPageStyles(page.name);
 
   // page already loaded → just show it
   if (pageLoaded[page.name]) {
@@ -49,7 +150,7 @@ async function loadPage(page) {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     return;
   }
-
+  
   try {
     console.log(`Loading page ${page.name}`);
     const res = await fetch(`${page.pagePath}/index.html`);
@@ -63,11 +164,24 @@ async function loadPage(page) {
 
     // inject CSS once
     if (page.hasCss) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = `${page.pagePath}/styles.css`;
-      link.dataset.page = page.name;
-      document.head.appendChild(link);
+      try {
+        const res = await fetch(`${page.pagePath}/styles.css`);
+        if (!res.ok) throw new Error(`Failed to fetch CSS: ${page.pagePath}/styles.css`);
+
+        const cssText = await res.text();
+
+        // Optionally scope it to the page container
+        const scopedCSS = prependCSS(cssText, `#page-${page.name}`);
+
+        const style = document.createElement("style");
+        style.dataset.page = page.name;
+        style.textContent = scopedCSS;
+
+        // prepend to head so it has higher priority
+        document.head.prepend(style);
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     // inject JS once
@@ -105,6 +219,7 @@ function loadPageByPath(path) {
   if (!route) return;
   loadPage(route);
 }
+window.loadPageByPath = loadPageByPath;
 
 function createNavLink(entry) {
   const li = document.createElement("li");

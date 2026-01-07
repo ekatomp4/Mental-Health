@@ -33,9 +33,49 @@ const CARD_LIST = {
     },
 };
 
+let isOverlayActive = false;
+
 function LearnMore(name) {
-    console.log(name);
+  const overlay = document.getElementById("cardOverlay");
+  const overlayTitle = document.getElementById("overlayTitle");
+  const overlayText = document.getElementById("overlayText");
+  const card = CARD_LIST[name];
+
+  if (!card) return;
+
+  overlayTitle.textContent = card.title;
+  overlayText.textContent = card.description;
+
+  overlay.classList.add("active");
+  overlay.classList.remove("d-none");
+  isOverlayActive = true;
 }
+
+// Close overlay function
+function closeOverlay() {
+  const overlay = document.getElementById("cardOverlay");
+  overlay.classList.remove("active");
+  isOverlayActive = false;
+
+  setTimeout(() => {
+    if (!isOverlayActive) overlay.classList.add("d-none");
+  }, 300);
+}
+window.closeOverlay = closeOverlay;
+// Clicking outside the card closes overlay
+document.getElementById("cardOverlay").addEventListener("click", (e) => {
+  const card = e.currentTarget.querySelector(".card");
+  if (!card.contains(e.target)) closeOverlay();
+});
+
+// Optional: Escape key closes overlay
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && isOverlayActive) closeOverlay();
+});
+
+window.LearnMore = LearnMore;
+
+
 
 const cardTemplate = document.getElementById("cardTemplate").innerHTML;
 
@@ -43,9 +83,9 @@ function loadCards() {
     Object.keys(CARD_LIST).forEach((cardName) => {
         const card = CARD_LIST[cardName];
         const cardElement = document.createElement("div");
-        cardElement.innerHTML = cardTemplate.replaceAll("[[title]]", card.title).replaceAll("[[text]]", card.description);
+        cardElement.innerHTML = cardTemplate.replaceAll("[[title]]", card.title).replaceAll("[[text]]", card.description).replaceAll("[[key]]", cardName);
         cardContainer.appendChild(cardElement);
     });
 }
 
-loadCards();
+loadCards();    

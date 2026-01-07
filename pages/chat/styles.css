@@ -1,47 +1,108 @@
 .card {
-    padding: 15px;
-    box-sizing: border-box;
-    height: 100%;
-    width: 20vw;
+  padding: 15px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 20vw;
 }
 @media screen and (max-width: 1024px) {
-    .card {
-        width: 30vw;
-    }
+  .card {
+    width: 30vw;
+  }
 }
 @media screen and (max-width: 768px) {
-    .card {
-        width: 80vw;
-    }
+  .card {
+    width: 80vw;
+  }
 }
 
 .card-body {
-    display: flex;
-    flex-direction: column;
-    padding: 0px !important;
-    width: 100%;
-    aspect-ratio: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0px !important;
+  width: 100%;
+  aspect-ratio: 2;
 }
 .card-body > p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-indent: 2rem;
+  overflow: hidden;
 }
 .cardContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    min-height: 100%;
+  min-height: 100%;
 
-    gap: 20px;
+  gap: 20px;
 }
 
 .card-body > .btn {
-    margin-top: auto;
-    width: fit-content;
-    margin-left: auto;
+  margin-top: auto;
+  width: fit-content;
+  margin-left: auto;
 }
+
+/* overlay background */
+#cardOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex; /* flex to center */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+  z-index: 1050;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#cardOverlay.active {
+  opacity: 1;
+}
+
+#cardOverlay .card {
+  display: flex;
+  flex-direction: column;
+  width: 40vw; /* bigger than container cards */
+  max-width: 700px;
+  height: fit-content;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+#cardOverlay.active .card {
+  transform: scale(1);
+}
+
+#cardOverlay .card button {
+  margin-top: auto !important;
+  margin-left: auto;
+}
+
+#cardOverlay .card-title {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1em;
+}
+
+/* Responsive like your normal cards */
+@media (max-width: 1024px) {
+  #cardOverlay .card {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #cardOverlay .card {
+    width: 90vw;
+  }
+}
+

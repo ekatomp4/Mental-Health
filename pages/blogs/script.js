@@ -56,7 +56,7 @@ const blogContainer = document.getElementById("blogContainer");
 
 function MDtoObject(md) {
   const authormatch = md.match(/Author:\s*(.*)/);
-  const author = authormatch ? authormatch[1].trim() : "MentalPanda";
+  const author = authormatch ? authormatch[1].trim() : "Bean";
   const date = md.match(/Date:\s*(.*)/)[1].trim();
 
   const bodyMatch = md.match(/Body:\s*([\s\S]*)/);

@@ -60,6 +60,9 @@ button {
 .rounded {
   border-radius: var(--bs-border-radius);
 }
+.shadowed-lightspread {
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.15) !important;
+}
 .shadowed-soft {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3) !important;
 }

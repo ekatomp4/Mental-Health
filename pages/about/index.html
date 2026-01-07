@@ -39,7 +39,7 @@
 
     
     <div class="col-sm p-2 ">
-      <div class="p-2 border bg-light h-100 rounded">
+      <div class="p-2 border bg-light h-100 rounded shadow-sm">
         <!-- Your content goes here -->
         <h2>How To Get Involved</h2>
         <p class="m-3">
@@ -61,21 +61,22 @@
 <section class="contact">
   <h2 class="display-4 fw-bold text-center m-5">Contact Us</h2>
 
-  <div class="w-50 mx-auto">
-    <p class="text-center">
+  <div class="row mx-auto justify-content-center">
+    <p class="text-center col-md-6 ">
       If you have any questions or would like to learn more about our campaign,
       please don't hesitate to reach out. You can contact us via phone at <a href="tel:+1234567890">(123) 456-7890</a>
       or email us at <a href="mailto:contact-us@mentalpanda.com">contact-us@mentalpanda.com</a>. We look forward to
       hearing from you!
     </p>
+    <p class="row my-2"></p>
   </div>
 
   <link href="cdn.jsdelivr.net" rel="stylesheet" />
-
-  <div class="container mt-5">
+  
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h2 class="mb-4">Sign up for our newsletter</h2>
+        <h2 class="mb-4 mt-4">Sign up for our newsletter</h2>
         <form action="/submit-signup" method="POST">
           <!-- Name Input -->
           <div class="mb-3">
@@ -85,7 +86,7 @@
               class="form-control"
               id="fullName"
               name="fullName"
-              placeholder="Enter your full name"
+              placeholder="Name"
               required
             />
           </div>
@@ -98,13 +99,15 @@
               class="form-control"
               id="email"
               name="email"
-              placeholder="Enter your email address"
+              placeholder="Email address"
               required
             />
           </div>
+          
+          <!-- lol -->
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary m-4 mw-none mn-none">Sign Up</button>
+          <button type="submit" class="btn btn-primary mt-5 mb-3 me-none float-end">Sign Up</button>
         </form>
       </div>
     </div>
