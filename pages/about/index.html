@@ -1,7 +1,7 @@
 <section class="hero bg-primary text-white">
-  <div class="container text-center">
-    <h1 class="display-4 fw-bold mt-4">About This Campaign</h1>
-    <p class="lead mt-3">
+  <div class="container text-center py-5">
+    <h1 class="display-4 fw-bold">Why Should You Care?</h1>
+    <p class="lead m-3 text-center">
       This campaign is dedicated to raising awareness about mental health and
       promoting well-being for all individuals. We believe that everyone
       deserves access to resources and support for their mental health journey.
@@ -13,32 +13,36 @@
     </p>
   </div>
 </section>
-
-<div class="container">
-  <div class="row">
-    <!-- Box 1 -->
-    <div class="col-6">
-      <div class="p-3 border bg-light">
-        <!-- Your content goes here -->
-        <h2>Why Should You Care?</h2>
-        <p class="m-1">
-          Mental health is a critical component of overall health and
-          well-being. It affects how we think, feel, and behave in our daily
-          lives. Unfortunately, many people still face barriers when it comes to
-          accessing mental health care and support. By supporting this campaign,
-          you are helping to raise awareness about the importance of mental
-          health and the need for accessible resources. Your involvement can
-          help create a more inclusive and supportive environment for those
-          affected by mental health challenges.
-        </p>
+<section class="main">
+  <div class="container">
+    <div class="row">
+      <!-- Box 1 -->
+      <div class="col-sm p-2 ">
+        <div class="p-2 border bg-light rounded shadow-sm">
+          <!-- Your content goes here -->
+          <h2>What is Mental Health?</h2>
+          <p class="m-3">
+            Mental health is a critical component of overall health and
+            well-being. It affects how we think, feel, and behave in our daily
+            lives. Unfortunately, many people still face barriers when it comes to
+            accessing mental health care and support. By supporting this campaign,
+            you are helping to raise awareness about the importance of mental
+            health and the need for accessible resources. Your involvement can
+            help create a more inclusive and supportive environment for those
+            affected by mental health challenges.
+          </p>
+        </div>
+        
       </div>
-    </div>
-    <!-- Box 2 -->
-    <div class="col-6">
-      <div class="p-3 border bg-light">
+      <!-- Box 2 -->
+      
+
+    
+    <div class="col-sm p-2 ">
+      <div class="p-2 border bg-light h-100 rounded">
         <!-- Your content goes here -->
-        <h2>Get Involved</h2>
-        <p class="m-4">
+        <h2>How To Get Involved</h2>
+        <p class="m-3">
           There are many ways to get involved with our campaign. You can
           volunteer your time, donate to support our initiatives, or simply
           spread the word about mental health awareness. Join us in our mission
@@ -50,57 +54,59 @@
       </div>
     </div>
   </div>
+  </div>    
 </div>
+  
+</section>
+<section class="contact">
+  <h2 class="display-4 fw-bold text-center m-5">Contact Us</h2>
 
-<h2 class="display-4 fw-bold text-center m-5">Contact Us</h2>
+  <div class="w-50 mx-auto">
+    <p class="text-center">
+      If you have any questions or would like to learn more about our campaign,
+      please don't hesitate to reach out. You can contact us via phone at <a href="tel:+1234567890">(123) 456-7890</a>
+      or email us at <a href="mailto:contact-us@mentalpanda.com">contact-us@mentalpanda.com</a>. We look forward to
+      hearing from you!
+    </p>
+  </div>
 
-<div class="w-50 mx-auto">
-  <p class="text-center">
-    If you have any questions or would like to learn more about our campaign,
-    please don't hesitate to reach out. You can contact us via phone at (123)
-    456-7890 or email us at mentalpandacampaign@gmail.com. We look forward to
-    hearing from you!
-  </p>
-</div>
+  <link href="cdn.jsdelivr.net" rel="stylesheet" />
 
-<link href="cdn.jsdelivr.net" rel="stylesheet" />
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="mb-4">Sign up for our newsletter</h2>
+        <form action="/submit-signup" method="POST">
+          <!-- Name Input -->
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
 
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h2 class="mb-4">Sign Up For Campaign</h2>
-      <form action="/submit-signup" method="POST">
-        <!-- Name Input -->
-        <div class="mb-3">
-          <label for="fullName" class="form-label">Full Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="fullName"
-            name="fullName"
-            placeholder="Enter your full name"
-            required
-          />
-        </div>
+          <!-- Email Input -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+          </div>
 
-        <!-- Email Input -->
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-      </form>
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary m-4 mw-none mn-none">Sign Up</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
-
-<img src="https://cnandco.com/wp-content/uploads/2022/08/panda-image-1.png" width="1000" height="500" alt="Mental Health Panda" class="d-block mx-auto my-4"/>
+</section>

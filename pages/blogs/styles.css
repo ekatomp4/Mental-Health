@@ -1,0 +1,65 @@
+.card-body,
+.border-primary {
+  overflow: hidden;
+  --time: 0.2s;
+  transition: max-height var(--time) ease-in-out,
+    opacity var(--time) ease-in-out, padding var(--time) ease-in-out;
+}
+
+/* expanded state */
+.card-body {
+  max-height: 1000px; /* must exceed real content height */
+  opacity: 1;
+}
+
+.card-text {
+  padding-bottom: 1em;
+  overflow: auto ! important;
+}
+
+/* collapsed state */
+.card-body.d-none {
+  display: block !important;
+  max-height: 0;
+  padding: 0px;
+  opacity: 0;
+}
+
+/* same logic for border-primary */
+.border-primary {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.border-primary.d-none {
+  display: block !important;
+  max-height: 0;
+  opacity: 0;
+}
+
+.card-main {
+  padding-bottom: 0px !important;
+}
+
+.card-container {
+    margin-bottom: 4em;
+}
+
+.top {
+    font-size: 4rem;
+    padding: 4rem 0 !important;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;;
+    padding: 1rem;
+}
+
+#blogTemplate {
+    display: none;
+}
+
+.pfp {
+  width: 50px;
+  aspect-ratio: 1;
+}
+.author {
+  filter: brightness(0.5);
+}

@@ -30,7 +30,7 @@ section {
 
 .navbar {
   z-index: 100 !important;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
 footer {
@@ -42,6 +42,11 @@ footer {
     margin-bottom: 5vh;
     padding: 0 5%;
   }
+}
+
+
+.hidden {
+    display: none !important;
 }
 
 a,
@@ -108,3 +113,19 @@ button {
     padding: 1em;
 }
 
+.p-2 {
+  padding: 1.2em !important;
+}
+/* Margin cancellation based on North, East South, West naming convention :) */
+.mn-none {
+  margin-top:0 !important;
+}
+.me-none {
+  margin-right:0 !important;
+}
+.ms-none {
+  margin-bottom:0 !important;
+}
+.mw-none {
+  margin-left:0 !important;
+}

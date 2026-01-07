@@ -10,7 +10,7 @@
 
   width: var(--width);
   position: absolute;
-  bottom: calc(-0.1 * var(--width));
+  bottom: calc(-0.32 * var(--width));
   left: 10%;
   pointer-events: none;
   user-select: none;
@@ -25,7 +25,6 @@
 
     width: var(--width);
     left: 5%;
-    bottom: calc(-0.1 * var(--width));
     /* transform: rotate(90deg); */
   }
 }

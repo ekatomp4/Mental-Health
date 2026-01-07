@@ -1,4 +1,2 @@
-# Hello, welcome to the test article!
-### Great to be here.
-
-I'm just living life.
+Date: happy new year
+Body: hello friends
