@@ -22,9 +22,16 @@ const pages = [
     hasJs: true,
   },
   {
-    name: "Chat",
-    paths: ["/chat"],
-    pagePath: "/pages/chat",
+    name: "Conditions",
+    paths: ["/conditions"],
+    pagePath: "/pages/conditions",
+    hasCss: true,
+    hasJs: true,
+  },
+    {
+    name: "Find",
+    paths: ["/find"],
+    pagePath: "/pages/find",
     hasCss: true,
     hasJs: true,
   },
@@ -47,6 +54,7 @@ export const CONFIG = {
     createNavEntry(getPageByName("Home")),
     createNavEntry(getPageByName("Blogs")),
     createNavEntry(getPageByName("About")),
-    createNavEntry(getPageByName("Chat"))
+    createNavEntry(getPageByName("Conditions")),
+    createNavEntry(getPageByName("Find")),
   ],
 };
