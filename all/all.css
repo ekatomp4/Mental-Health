@@ -7,6 +7,8 @@
   --bs-font-sans-serif: "Lexend", system-ui, -apple-system, "Segoe UI",
     sans-serif;
 
+  --bs-body-bg: #f0f0f0;
+
   --primary: #339961;
 }
 

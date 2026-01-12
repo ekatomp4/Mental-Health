@@ -1,39 +1,42 @@
 <h1 class="text-center my-5">Find a Therapist</h1>
 <p class="text-center mb-5">Use the search options below to find a therapist that meets your needs.</p>
 
-
 <h2 class="text-center">Search by Location</h2>
 
-
-<form action="/find" method="get" class="mb-4 text-center mx-auto w-50">
-    <div class="form-group">
+<div class="mb-4 text-center mx-auto w-50" id="locationForm">
+    <!-- <div class="form-group">
         <label for="location">Enter your city or zip code:</label>
         <input type="text" id="location" name="location" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-primary mt-2">Search</button>
-</form>
-<h2 class="text-center">Search by Specialty</h2>
-<form action="/find" method="get" class="mb-4 text-center mx-auto w-50">
+    </div> -->
+    <button onclick="findNearbyTherapyOffices()" class="btn btn-primary mt-2">Search</button>
+</div>
+
+<!-- <h2 class="text-center">Search by Specialty</h2>
+<form class="mb-4 text-center mx-auto w-50">
     <div class="form-group">
         <label for="specialty">Select a specialty:</label>
-        <select id="specialty" name="specialty" class="form-control" required>
-            <option value="">--Choose a specialty--</option>
-            <option value="anxiety">Anxiety</option>
-            <option value="depression">Depression</option>
-            <option value="relationship">Relationship Issues</option>
-            <option value="trauma">Trauma</option>
-            <option value="stress">Stress Management</option>
+        <select id="specialty" class="form-control" disabled>
+            <option>Location search only</option>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary mt-2">Search</button>
+    <button class="btn btn-primary mt-2" disabled>Search</button>
 </form>
+
 <h2 class="text-center">Search by Therapist</h2>
-<form action="/find" method="get" class="mb-4 text-center mx-auto w-50">
+<form class="mb-4 text-center mx-auto w-50">
     <div class="form-group">
         <label for="name">Enter therapist's name:</label>
-        <input type="text" id="name" name="name" class="form-control mx-auto" required>
+        <input type="text" id="name" class="form-control mx-auto" disabled>
     </div>
-    <button type="submit" class="btn btn-primary mt-2">Search</button>
-</form>
-<img src="https://i5.walmartimages.com/asr/b3d573c2-fb35-4e3b-bd0d-ee30df8243c5.f9a884c1b693ab4ee1a3e2da24e069a1.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="person hugging panda" width="300">
+    <button class="btn btn-primary mt-2" disabled>Search</button>
+</form> -->
 
+<div class="pandaCare">
+    <div
+        alt="person hugging panda"
+        class="rounded"
+    >
+    </div>
+</div>
+
+<div id="results" class="text-center mt-4"></div>
