@@ -2,16 +2,19 @@
   padding: 15px;
   box-sizing: border-box;
   height: 100%;
-  width: 20vw;
+  width: 25vw;
+  aspect-ratio: 1.7;
 }
 @media screen and (max-width: 1024px) {
   .card {
-    width: 30vw;
+    width: 35vw;
+    aspect-ratio: 1.3;
   }
 }
 @media screen and (max-width: 768px) {
   .card {
     width: 80vw;
+    aspect-ratio: 2;
   }
 }
 
@@ -20,6 +23,7 @@
   flex-direction: column;
   padding: 0px !important;
   width: 100%;
+  overflow-y: auto;
   aspect-ratio: 2;
 }
 .card-body > p {
@@ -31,6 +35,16 @@
   text-indent: 2rem;
   overflow: hidden;
 }
+
+#cardOverlay .card-text {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+#cardOverlay .card-body > p {
+  -webkit-line-clamp: unset;
+  height: 100%;
+}
+
 .cardContainer {
   display: flex;
   flex-direction: row;
@@ -38,6 +52,7 @@
   justify-content: center;
 
   min-height: 100%;
+  width: 100%;
 
   gap: 20px;
 }
@@ -106,3 +121,29 @@
   }
 }
 
+
+.bottomImg {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  width: 100vw;
+  height: 25vh;
+}
+.bottomImg > img {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 25%);
+  width: 25vw;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+}
+
+@media screen and (orientation: portrait) {
+  .bottomImg {
+    display: none;
+  }
+}

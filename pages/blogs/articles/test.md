@@ -1,4 +1,4 @@
-Title: 
-Author: Bean McQueen
+Title: Sample
+Author: Bean the Panda
 Date: January 7th, 2026
-Body: Mascot Of Website!!!!!!!
+Body: Use **this** as a template. Footers should be declared *above* the body.

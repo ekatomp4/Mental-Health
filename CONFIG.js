@@ -35,6 +35,14 @@ const pages = [
     hasCss: true,
     hasJs: true,
   },
+  {
+    name: "Chat",
+    paths: ["/chat"],
+    pagePath: "/pages/chat",
+    title: "MentalPanda Chat",
+    hasCss: false,
+    hasJs: true,
+  }
 ];
 
 function getPageByName(name) {
@@ -56,5 +64,6 @@ export const CONFIG = {
     createNavEntry(getPageByName("About")),
     createNavEntry(getPageByName("Conditions")),
     createNavEntry(getPageByName("Find")),
+    createNavEntry(getPageByName("Chat")),
   ],
 };

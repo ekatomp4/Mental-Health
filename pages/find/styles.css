@@ -36,7 +36,8 @@
     width: 20vw;
     /* height: 100%; */
     aspect-ratio: 1;
-    background: url("https://i5.walmartimages.com/asr/b3d573c2-fb35-4e3b-bd0d-ee30df8243c5.f9a884c1b693ab4ee1a3e2da24e069a1.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF") no-repeat center;
+    background: url("../../media/images/pandas/panda-laptop.png");
+    /* background: url("https://i5.walmartimages.com/asr/b3d573c2-fb35-4e3b-bd0d-ee30df8243c5.f9a884c1b693ab4ee1a3e2da24e069a1.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF") no-repeat center; */
     background-size: contain;
 }
 
@@ -47,8 +48,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--bs-body-bg));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bs-body-bg));
     pointer-events: none;
     border-radius: inherit;
     /* opacity: 0.5; */
+}
+
+@media (max-width: 768px) {
+    .pandaCare > div {
+        width: 70vw;
+    }
 }

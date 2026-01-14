@@ -1,6 +1,6 @@
 <div id="blogTemplate">
-    
-    <div class="row g-1 card-container">
+
+    <div class="row g-1 card-container" data-[[blog-id]]>
         <div class="card"> <!-- Id can be changed later for web link indexing -->
 
             <div class="card-pads card-main">
@@ -30,7 +30,7 @@
             </div> 
             
             <div class="card-footer" id="footer">
-                <span>[[footer]]</span>
+                <span class="muted">[[footer]]</span>
                 <button class="float-end activate-article" id="expand" onclick="activateArticle(this)"> 
                 <i class="bi bi-arrows-angle-expand"></i>
                 </button>
@@ -45,8 +45,8 @@
 <section class="py-5 bg-light top">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1 class="fw-bold">Blogs</h3>
+            <div class="col-md-6 w-100">
+                <h1 class="fw-bold text-center">Blogs</h3>
             </div>
         </div>
     </div>

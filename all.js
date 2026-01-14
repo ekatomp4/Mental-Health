@@ -248,3 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadPageByPath(window.location.pathname);
 });
+
+window.loadPage = loadPage;
+window.loadPageByPath = loadPageByPath;

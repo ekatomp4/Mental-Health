@@ -2,7 +2,7 @@ async function queryOverpass(lat, lng) {
   const radius = 20000; // 20km — REQUIRED for real data
 
   const query = `
-    [out:json][timeout:50];
+    [out:json][timeout:100];
     (
       node["healthcare"="mental_health"](around:${radius},${lat},${lng});
       node["healthcare"="psychologist"](around:${radius},${lat},${lng});
@@ -139,6 +139,7 @@ async function findNearbyTherapyOffices() {
   } catch (error) {
     console.error(error);
     alert(`An error occurred while finding nearby therapy offices. ${error.message}`);
+    document.body.style.cursor = "default";
   }
 }
 

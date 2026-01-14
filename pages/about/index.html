@@ -1,16 +1,31 @@
+<style>
+  @media screen and (max-width: 1024px) {
+    .hero {
+      flex-direction: column !important;
+    }
+    .hero p {
+      width: 100% !important;
+    }
+    .hero img {
+      height: 30vh !important;
+      object-fit: contain !important;
+    }
+  }
+</style>
+
 <section class="hero bg-primary text-white">
   <div class="container text-center py-5">
-    <h1 class="display-4 fw-bold">Why Should You Care?</h1>
+    <h1 class="display-4 fw-bold">About MentalPanda</h1>
     
   </div>
 </section>
 <section class="main">
   <div class="container">
     <div class="row">
-      <!-- Box 1 -->
-      <div class="col-sm p-2 ">
-        <div class="col-sm">
-          <p class="lead m-3 text-center">
+
+      <div class="d-flex justify-content-center hero">
+        <img src="../../media/images/pandas/panda-question.png" alt="Hero Image" class="overlayPanda h-75">
+        <p class="lead py-5 mb-2 text-center indent w-50">
             This campaign is dedicated to raising awareness about mental health and
             promoting well-being for all individuals. We believe that everyone
             deserves access to resources and support for their mental health journey.
@@ -20,12 +35,15 @@
             a community where mental health is prioritized and everyone feels
             empowered to seek help when needed.
         </p>
-        </div>
+      </div>
+
+      <!-- Box 1 -->
+      <div class="col-sm p-2 mt-5">
         <div class="p-2 border bg-light rounded shadow-sm">
           <!-- Your content goes here -->
            
-          <h2>What is Mental Health?</h2>
-          <p class="">
+          <h2 class="text-center mb-4">What is Mental Health?</h2>
+          <p class="indent">
             Mental health is a critical component of overall health and
             well-being. It affects how we think, feel, and behave in our daily
             lives. Unfortunately, many people still face barriers when it comes to
@@ -42,11 +60,11 @@
       
 
     
-    <div class="col-sm p-2 ">
+    <div class="col-sm p-2 mt-5">
       <div class="p-2 border bg-light h-100 rounded shadow-sm">
         <!-- Your content goes here -->
-        <h2>How To Get Involved</h2>
-        <p class="">
+        <h2 class="text-center mb-4">How To Get Involved</h2>
+        <p class="indent">
           There are many ways to get involved with our campaign. You can
           volunteer your time, donate to support our initiatives, or simply
           spread the word about mental health awareness. Join us in our mission

@@ -21,7 +21,7 @@ function activateArticle(button) {
 }
 window.activateArticle = activateArticle;
 
-const BLOGS = ["test"];
+const BLOGS = ["10-ways-to-deal-with-anxiety", "depression-assistance", "first-article"];
 
 const blogTemplate = document.getElementById("blogTemplate").innerHTML;
 const blogContainer = document.getElementById("blogContainer");
@@ -55,6 +55,8 @@ const blogContainer = document.getElementById("blogContainer");
 // }
 
 function MDtoObject(md) {
+  const footerMatch = md.match(/Footer:\s*(.*)/);
+  const titleMatch = md.match(/Title:\s*(.*)/);
   const authormatch = md.match(/Author:\s*(.*)/);
   const author = authormatch ? authormatch[1].trim() : "Bean";
   const date = md.match(/Date:\s*(.*)/)[1].trim();
@@ -63,11 +65,27 @@ function MDtoObject(md) {
   const body = bodyMatch ? bodyMatch[1].trim() : "";
 
   return {
+    title: titleMatch ? titleMatch[1].trim() : null,
     text: slimdownJs.render(body),
     author,
     date,
+    footer: footerMatch ? footerMatch[1].trim() : null
   };
 }
+
+
+function moveIntoFocus() {
+  // get ?id=<id>
+  const targetId = window.location.searchParams.get("id");
+  if (targetId) {
+    const target = document.querySelector(`[data-${targetId}]`);
+    console.log(target);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+}
+
 
 async function loadBlogs() {
   const blogData = {};
@@ -93,11 +111,11 @@ async function loadBlogs() {
 
     const parsedInside = MDtoObject(blogData[key]);
     const parsed = {
-      title: key.charAt(0).toUpperCase() + key.slice(1),
-      text: parsedInside.text,
-      author: parsedInside.author,
-      date: parsedInside.date,
-      footer: "Footer Garbage",
+      title: parsedInside.title ?? key.charAt(0).toUpperCase() + key.slice(1),
+      text: parsedInside.text ?? "Unknown",
+      author: parsedInside.author ?? "Unknown",
+      date: parsedInside.date ?? "Unknown",
+      footer: parsedInside.footer ?? `${key}.md`
     };
     console.log(parsed);
 
@@ -106,8 +124,13 @@ async function loadBlogs() {
     const newCard3 = newCard2.replace("[[author]]", parsed.author);
     const newCard4 = newCard3.replace("[[date]]", parsed.date);
     const newCard5 = newCard4.replace("[[footer]]", parsed.footer);
-    blogContainer.innerHTML += newCard5;
+
+    const newCard6 = newCard5.replace('data-[[blog-id]]', `data-#${key}`);
+    blogContainer.innerHTML += newCard6;
   }
+
+  // moveIntoFocus();
 }
 
 loadBlogs();
+
