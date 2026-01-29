@@ -26,6 +26,7 @@
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
+  window.appendMessage = appendMessage;
 
   // load mock messages
   for (const m of mockMessages) {
@@ -35,6 +36,7 @@
   chatSend.addEventListener("click", () => {
     const text = chatInput.value.trim();
     if (!text) return;
+    window.dispatchEvent(new CustomEvent("new-message", { detail: text, name: "You" }));
     appendMessage("You", text);
     chatInput.value = "";
   });
@@ -46,3 +48,24 @@
     }
   });
 })();
+
+// Chatbot implementation here
+
+
+// call this to send a message as the system
+function sendMessageAsSystem(text) {
+  window.appendMessage("Panda", text);
+}
+
+// called when a new message is received
+function onNewMessage(user, text) {
+
+}
+
+
+
+
+// ignore this
+window.addEventListener("new-message", (e) => {
+  onNewMessage(e.detail.name, e.detail.text);
+});
