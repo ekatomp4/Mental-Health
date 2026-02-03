@@ -1,61 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>MentalPanda</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preload" href="../../all/all.css" as="style" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="../../all/all.css" />
+  <title>MentalPanda</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/slimdown-js/dist/slimdown.umd.js"></script>
-    <script src="/all.js" type="module"></script>
+  <link rel="preload" href="../../all/all.css" as="style" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../all/all.css" />
 
-    <!--ChatBot-->
-    <script> window.chtlConfig = { chatbotId: "4432428389" } </script>
-    <script async data-id="4432428389" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/slimdown-js/dist/slimdown.umd.js"></script>
+  <script src="/all.js" type="module"></script>
 
-  </head>
+  <!--ChatBot-->
+  <script> window.chtlConfig = { chatbotId: "4432428389" } </script>
+  <script async data-id="4432428389" id="chtl-script" type="text/javascript"
+    src="https://chatling.ai/js/embed.js"></script>
 
-  <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div class="container">
-        <span class="navbar-brand fw-bold" onclick="loadPageByPath('/home')">MentalPanda</span>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="mainNavItems"></ul>
+</head>
+
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <span class="navbar-brand fw-bold" onclick="loadPageByPath('/home')">MentalPanda</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="mainNavItems"></ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="app"></div>
+
+  <!-- footer -->
+  <footer class="py-4 bg-dark text-white">
+    <!-- old footer is here
+    <div class="container text-center">
+        <small>© 2026 MentalPanda. All rights reserved. Want to schedule and appointment? <a href="https://calendly.com/mentalpanda" target="_blank">Book Now</a></small>
+      </div> -->
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="https://calendly.com/mentalpanda" target="_blank">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h5>Mental Health Reminder</h5>
+          <p class="footer-quote">
+            “It’s okay to not be okay. Asking for help is a sign of strength.”
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <h5>Crisis Support</h5>
+          <p class="text-light">If you or someone you know is in crisis:</p>
+          <p class="hotline">
+            Call or Text <strong>988</strong><br>
+            Suicide & Crisis Lifeline (24/7)
+          </p>
         </div>
       </div>
-    </nav>
+    </div>
+  </footer>
+</body>
 
-    <div id="app"></div>
-
-    <!-- footer -->
-    <footer class="py-4 bg-dark text-white">
-      <div class="container text-center">
-        <small>© 2026 MentalPanda. All rights reserved. Want to schedule and appointment? <a href="https://calendly.com/mentalpanda" target="_blank">Book Now</a></small>
-      </div>
-    </footer>
-  </body>
 </html>
