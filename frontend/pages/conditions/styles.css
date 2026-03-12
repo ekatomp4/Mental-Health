@@ -1,79 +1,118 @@
-.card {
-  padding: 15px;
+/* ===================== CARD PREVIEW ===================== */
+.card-preview {
+  padding: 10px 10px 0 10px;
   box-sizing: border-box;
-  height: 100%;
-  width: 25vw;
-  aspect-ratio: 1.7;
-}
-@media screen and (max-width: 1024px) {
-  .card {
-    width: 35vw;
-    aspect-ratio: 1.3;
-  }
-}
-@media screen and (max-width: 768px) {
-  .card {
-    width: 80vw;
-    aspect-ratio: 2;
-  }
+  width: 200px;
+  border-radius: 16px;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.07);
+  background: #fff;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  padding: 0px !important;
+.card-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Box shadow applied via class so it also shows at rest */
+.shadow-card {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-wrap {
   width: 100%;
-  overflow-y: auto;
-  aspect-ratio: 2;
-}
-.card-body > p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  text-indent: 2rem;
+  aspect-ratio: 1;
+  /* background: #f0f4f8; */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 12px; */
+  box-sizing: border-box;
   overflow: hidden;
 }
 
-#cardOverlay .card-text {
-  max-height: 80vh;
-  overflow-y: auto;
-}
-#cardOverlay .card-body > p {
-  -webkit-line-clamp: unset;
-  height: 100%;
+.card-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
+.card-label {
+  padding: 10px 4px;
+  background: #fff;
+}
+
+.card-label .card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* ===================== CARD CONTAINER ===================== */
 .cardContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
   min-height: 100%;
   width: 100%;
-
   gap: 20px;
 }
 
-.card-body > .btn {
-  margin-top: auto;
-  width: fit-content;
-  margin-left: auto;
+/* ===================== FILTER PILLS ===================== */
+.btn-filter {
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1.5px solid #0d6efd;
+  color: #0d6efd;
+  background: transparent;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-/* overlay background */
+.btn-filter:hover,
+.btn-filter.active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* ===================== SEARCH BAR ===================== */
+#searchInput:focus {
+  box-shadow: none;
+  border-color: #dee2e6;
+  outline: none;
+}
+
+.input-group:focus-within {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+}
+
+.input-group:focus-within .input-group-text,
+.input-group:focus-within .form-control,
+.input-group:focus-within .btn {
+  border-color: #86b7fe;
+}
+
+/* ===================== OVERLAY / MODAL ===================== */
 #cardOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex; /* flex to center */
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+  background-color: rgba(0, 0, 0, 0.62);
   z-index: 1050;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -83,45 +122,142 @@
   opacity: 1;
 }
 
-#cardOverlay .card {
-  display: flex;
-  flex-direction: column;
-  width: 40vw; /* bigger than container cards */
-  max-width: 700px;
-  height: fit-content;
+.overlay-card {
+  position: relative;
+  width: min(860px, 90vw);
+  max-height: 85vh;
+  border-radius: 18px !important;
+  overflow: hidden;
   transform: scale(0.95);
   transition: transform 0.3s ease;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.28);
 }
 
-#cardOverlay.active .card {
+#cardOverlay.active .overlay-card {
   transform: scale(1);
 }
 
-#cardOverlay .card button {
-  margin-top: auto !important;
-  margin-left: auto;
+.overlay-inner {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  min-height: 420px;
+  max-height: 85vh;
 }
 
-#cardOverlay .card-title {
-  font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1em;
+.overlay-img-col {
+  flex: 0 0 260px;
+  background: #f0f4f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
-/* Responsive like your normal cards */
-@media (max-width: 1024px) {
-  #cardOverlay .card {
-    width: 60vw;
+.overlay-img-col .img-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.overlay-img {
+  max-width: 100%;
+  /* max-height: 180px; */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+/* SCROLL FIX: min-height: 0 allows flex child to actually scroll */
+.overlay-text-col {
+  flex: 1;
+  min-height: 0;
+  padding: 2rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.overlay-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a2640;
+}
+
+.overlay-body {
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: #3d4f63;
+  white-space: pre-line;
+  flex: 1;
+}
+
+.overlay-close-x {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.overlay-close-x:hover {
+  background: rgba(0,0,0,0.08);
+  color: #111;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .overlay-card {
+    width: 95vw;
+    max-height: 90vh;
+  }
+
+  .overlay-inner {
+    flex-direction: column;
+    min-height: unset;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .overlay-img-col {
+    flex: none;
+    height: auto;
+    padding: 20px 20px 12px;
+  }
+
+  .overlay-text-col {
+    min-height: unset;
+    overflow-y: visible;
+  }
+
+  .card-preview {
+    width: 43vw;
   }
 }
 
-@media (max-width: 768px) {
-  #cardOverlay .card {
+@media (max-width: 480px) {
+  .card-preview {
     width: 90vw;
   }
 }
 
-
+/* ===================== BOTTOM DECORATION ===================== */
 .bottomImg {
   position: fixed;
   bottom: 0;
@@ -143,7 +279,9 @@
 }
 
 @media screen and (orientation: portrait) {
-  .bottomImg {
-    display: none;
-  }
+  .bottomImg { display: none; }
+}
+
+.img-fluid {
+  border-radius: 8px;
 }

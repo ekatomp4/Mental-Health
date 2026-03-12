@@ -3,8 +3,8 @@ import CONFIG from "../CONFIG.js";
 // loaders
 
 function insertNav() {
-	const nav = document.createElement("nav");
-	nav.innerHTML = `
+    const nav = document.createElement("nav");
+    nav.innerHTML = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">MentalPanda</a>
@@ -13,15 +13,15 @@ function insertNav() {
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" onclick="routeTo('home')">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="routeTo('blogs')">Blogs</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="routeTo('about')">About</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="window.loadPageByPath('/home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="window.loadPageByPath('/blogs')">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="window.loadPageByPath('/about')">About</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     `;
-	document.body.prepend(nav);
+    document.body.prepend(nav);
 }
 
 function insertAll() {
@@ -89,56 +89,3 @@ function insertLoader() {
 	document.body.prepend(loaderDiv);
 	document.head.appendChild(loaderStyle);
 }
-
-function loadPage() {
-	insertLoader();
-
-	try {
-		insertNav();
-
-		loadFonts();
-
-		injectBootstrap();
-
-		insertAll();
-	} catch (error) {
-		throw `Error loading loader module: ${error}`;
-	}
-
-	console.log("loaded");
-
-	const loaderDiv = document.getElementById("loader");
-	setTimeout(() => {
-		loaderDiv.classList.add("hidden");
-	}, 100);
-	setTimeout(() => {
-		loaderDiv.remove();
-	}, 5000);
-}
-
-loadPage();
-
-// ROUTER
-
-let currentRoute =
-	window.location.pathname.split("/").pop().replace(".html", "") || "index";
-console.log("Current route:", currentRoute);
-
-const PATHS = CONFIG.PATHS;
-window.routeTo = (name) => {
-	if (name === "index") {
-		name = "home";
-	}
-
-	if (!PATHS.includes(name)) {
-		throw new Error(`Route ${name} does not exist`);
-	}
-
-	if (name === currentRoute) {
-		console.log(`Route ${name} already loaded`);
-		return;
-	}
-
-	const resolvedPath = `../../pages/${name}`;
-	window.location.replace(resolvedPath);
-};

@@ -154,3 +154,46 @@ async function findNearbyTherapyOffices() {
 //   });
 
 window.findNearbyTherapyOffices = findNearbyTherapyOffices;
+
+
+/* Mobile devices - Mack for mobile view to call 988 if "danger"
+    filtered.forEach(t => {
+        resultsDiv.innerHTML += `
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0 rounded-4" style="background-color: #e8f0f8;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title fw-bold text-primary">${t.name}</h5>
+                        <p class="card-text mb-1">
+                            <i class="bi bi-geo-alt-fill"></i> ${t.city}, ${t.zip}
+                        </p>
+                        <p class="card-text mb-3">
+                            <i class="bi bi-telephone-fill"></i>
+                            <a href="tel:${t.phone.replace(/\D/g, '')}" class="phone-link">
+                                ${t.phone}
+                            </a>
+                        </p>
+                        <a href="${t.link}" class="btn btn-outline-primary mt-auto">Contact</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+    else {
+        filtered.forEach(t => {
+        resultsDiv.innerHTML += `
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0 rounded-4" style="background-color: #e8f0f8;">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title fw-bold text-primary">${t.name}</h5>
+                        <p class="card-text mb-1"><i class="bi bi-geo-alt-fill"></i> ${t.city}, ${t.zip}</p>
+                        <p class="card-text mb-3"><i class="bi bi-telephone-fill"></i> ${t.phone}</p>
+                        <a href="${t.link}" class="btn btn-outline-primary mt-auto">Contact</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    } 
+    */

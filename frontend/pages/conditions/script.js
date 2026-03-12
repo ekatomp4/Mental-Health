@@ -1,7 +1,33 @@
 const cardContainer = document.getElementById("cardContainer");
+
+// Category tags for each card key
+const CARD_CATEGORIES = {
+    AnxietyDisorders:               "anxiety",
+    DepressiveDisorders:            "mood",
+    BipolarDisorders:               "mood",
+    ObsessiveCompulsiveDisorders:   "anxiety",
+    TraumaAndStressorRelatedDisorders: "trauma",
+    SchizophreniaSpectrumDisorders: "psychotic",
+    PersonalityDisorders:           "personality",
+    NeurodevelopmentalDisorders:    "neurodevelopmental",
+    EatingDisorders:                "behavioral",
+    SubstanceUseDisorders:          "behavioral",
+    SleepWakeDisorders:             "somatic",
+    DissociativeDisorders:          "trauma",
+    SomaticSymptomDisorders:        "somatic",
+    ImpulseControlDisorders:        "behavioral",
+    SexualAndGenderRelatedConditions: "somatic",
+    CognitiveDisorders:             "cognitive",
+    AdjustmentDisorders:            "mood",
+    BehavioralAddictions:           "behavioral",
+    MoodRegulationDisorders:        "mood",
+    PsychosocialStressConditions:   "somatic",
+};
+
 const CARD_LIST = {
     AnxietyDisorders: {
         title: "Anxiety Disorders",
+        image:"media/conditions/AnxietyPanda.png",
         description: `
 Anxiety disorders are characterized by persistent and excessive fear, worry, or
 apprehension that interferes with daily functioning.
@@ -18,6 +44,7 @@ time depending on stressors, environment, and coping capacity.
 
     DepressiveDisorders: {
         title: "Depressive Disorders",
+        image:"media/conditions/DepressionPanda.png",
         description: `
 Depressive disorders involve persistent low mood, emotional numbness, or a loss
 of interest or pleasure in activities that were once meaningful.
@@ -32,6 +59,7 @@ between biological vulnerability, life events, and environmental stress.
 
     BipolarDisorders: {
         title: "Bipolar Disorders",
+        image:"media/conditions/BipolarPanda.png",
         description: `
 Bipolar disorders are mood disorders defined by alternating periods of elevated
 or irritable mood and periods of depression.
@@ -47,6 +75,7 @@ work, and long-term life stability.
 
     ObsessiveCompulsiveDisorders: {
         title: "Obsessive-Compulsive Disorders",
+        image:"media/conditions/ObsessivePanda.png",
         description: `
 Obsessive-compulsive disorders are characterized by intrusive, unwanted thoughts
 or urges paired with repetitive behaviors or mental rituals performed to reduce
@@ -62,6 +91,7 @@ appraisal rather than logical reasoning.
 
     TraumaAndStressorRelatedDisorders: {
         title: "Trauma and Stressor-Related Disorders",
+        image:"media/conditions/TraumaStressPanda.png",
         description: `
 These disorders arise following exposure to traumatic or highly stressful events
 such as violence, disaster, abuse, or prolonged adversity.
@@ -76,6 +106,7 @@ identity, and interpersonal relationships.
 
     SchizophreniaSpectrumDisorders: {
         title: "Schizophrenia Spectrum Disorders",
+        image:"media/conditions/SchizophrenaPanda.png",
         description: `
 Schizophrenia spectrum disorders involve disruptions in perception, thought,
 emotion, and behavior.
@@ -90,6 +121,7 @@ widely in severity and course.
 
     PersonalityDisorders: {
         title: "Personality Disorders",
+        image:"media/conditions/PersonalityPanda.png",
         description: `
 Personality disorders are characterized by enduring patterns of inner experience
 and behavior that deviate from cultural expectations.
@@ -104,6 +136,7 @@ identity stability, and empathy.
 
     NeurodevelopmentalDisorders: {
         title: "Neurodevelopmental Disorders",
+        image:"media/conditions/NeurodevelopmentalPanda.png",
         description: `
 Neurodevelopmental disorders originate during early development and affect
 cognitive, emotional, or behavioral functioning.
@@ -118,6 +151,7 @@ environmental supports and individual adaptation.
 
     EatingDisorders: {
         title: "Eating Disorders",
+        image:"media/conditions/EDPanda.png",
         description: `
 Eating disorders involve persistent disturbances in eating behavior and body
 image perception.
@@ -132,6 +166,7 @@ often intertwined with control, self-worth, and emotional regulation.
 
     SubstanceUseDisorders: {
         title: "Substance Use Disorders",
+        image:"media/conditions/SubtancePanda.png",
         description: `
 Substance use disorders involve the compulsive use of substances despite harmful
 consequences.
@@ -146,6 +181,7 @@ contribute to development and persistence.
 
     SleepWakeDisorders: {
         title: "Sleep-Wake Disorders",
+        image:"media/conditions/SleepWakePanda.png",
         description: `
 Sleep-wake disorders involve persistent disruptions in sleep quality, timing, or
 duration.
@@ -160,6 +196,7 @@ conditions.
 
     DissociativeDisorders: {
         title: "Dissociative Disorders",
+        image:"media/conditions/DissociativePanda.png",
         description: `
 Dissociative disorders involve disruptions in consciousness, memory, identity, or
 perception.
@@ -173,6 +210,7 @@ Symptoms can range from mild detachment to profound disruptions in self-continui
 
     SomaticSymptomDisorders: {
         title: "Somatic Symptom Disorders",
+        image:"media/conditions/SomaticPanda.png",
         description: `
 Somatic symptom disorders are characterized by excessive focus on physical
 symptoms that cause distress or impairment.
@@ -187,6 +225,7 @@ processes.
 
     ImpulseControlDisorders: {
         title: "Impulse Control Disorders",
+        image:"media/conditions/ImpulsePanda.png",
         description: `
 Impulse control disorders involve difficulty resisting urges that are harmful to
 oneself or others.
@@ -200,6 +239,7 @@ They may be associated with emotional dysregulation and impaired decision-making
 
     SexualAndGenderRelatedConditions: {
         title: "Sexual and Gender-Related Conditions",
+        image:"media/conditions/GenderPanda.png",
         description: `
 These conditions involve distress related to sexual functioning, sexual behavior,
 or gender identity.
@@ -213,6 +253,7 @@ Not all variations represent pathology; distress and impairment are key factors.
 
     CognitiveDisorders: {
         title: "Cognitive Disorders",
+        image:"media/conditions/CognitivePanda.png",
         description: `
 Cognitive disorders involve impairment in memory, attention, language, or
 executive functioning.
@@ -226,6 +267,7 @@ These impairments can significantly impact independence and quality of life.
 
     AdjustmentDisorders: {
         title: "Adjustment Disorders",
+        image:"media/conditions/AdjustmentPanda.png",
         description: `
 Adjustment disorders occur in response to identifiable stressors and involve
 emotional or behavioral symptoms that exceed expected reactions.
@@ -239,6 +281,7 @@ They represent maladaptive coping rather than long-term psychopathology.
 
     BehavioralAddictions: {
         title: "Behavioral Addictions",
+        image:"media/conditions/BehavioralPanda.png",
         description: `
 Behavioral addictions involve compulsive engagement in rewarding behaviors despite
 negative consequences.
@@ -252,6 +295,7 @@ significantly impair functioning.
 
     MoodRegulationDisorders: {
         title: "Mood Regulation Disorders",
+        image:"media/conditions/MoodPanda.png",
         description: `
 Mood regulation disorders involve chronic difficulty managing emotional intensity
 and stability.
@@ -265,6 +309,7 @@ These difficulties often impact relationships and stress tolerance.
 
     PsychosocialStressConditions: {
         title: "Psychosocial Stress Conditions",
+        image:"media/conditions/StressPanda.png",
         description: `
 These conditions arise from prolonged exposure to social, economic, or relational
 stressors.
@@ -278,59 +323,178 @@ Chronic stress can compound vulnerability to other mental health disorders.
 };
 
 
+// ===================== OVERLAY =====================
 let isOverlayActive = false;
 
 function LearnMore(name) {
-  const overlay = document.getElementById("cardOverlay");
-  const overlayTitle = document.getElementById("overlayTitle");
-  const overlayText = document.getElementById("overlayText");
-  const card = CARD_LIST[name];
+    const overlay = document.getElementById("cardOverlay");
+    const overlayTitle = document.getElementById("overlayTitle");
+    const overlayText = document.getElementById("overlayText");
+    const overlayImage = document.getElementById("overlayImage");
+    const card = CARD_LIST[name];
 
-  if (!card) return;
+    if (!card) return;
 
-  overlayTitle.textContent = card.title;
-  overlayText.textContent = card.description;
+    overlayTitle.textContent = card.title;
+    overlayText.textContent = card.description;
 
-  overlay.classList.add("active");
-  overlay.classList.remove("d-none");
-  isOverlayActive = true;
+    if (card.image) {
+        overlayImage.src = card.image;
+        overlayImage.alt = card.title;
+        overlayImage.closest(".overlay-img-col").style.display = "flex";
+    } else {
+        overlayImage.closest(".overlay-img-col").style.display = "none";
+    }
+
+    overlay.classList.add("active");
+    overlay.classList.remove("d-none");
+    isOverlayActive = true;
+    document.body.style.overflow = "hidden";
 }
 
-// Close overlay function
 function closeOverlay() {
-  const overlay = document.getElementById("cardOverlay");
-  overlay.classList.remove("active");
-  isOverlayActive = false;
-
-  setTimeout(() => {
-    if (!isOverlayActive) overlay.classList.add("d-none");
-  }, 300);
+    const overlay = document.getElementById("cardOverlay");
+    overlay.classList.remove("active");
+    isOverlayActive = false;
+    document.body.style.overflow = "";
+    setTimeout(() => {
+        if (!isOverlayActive) overlay.classList.add("d-none");
+    }, 300);
 }
 window.closeOverlay = closeOverlay;
-// Clicking outside the card closes overlay
+
 document.getElementById("cardOverlay").addEventListener("click", (e) => {
-  const card = e.currentTarget.querySelector(".card");
-  if (!card.contains(e.target)) closeOverlay();
+    const card = e.currentTarget.querySelector(".overlay-card");
+    if (!card.contains(e.target)) closeOverlay();
 });
 
-// Optional: Escape key closes overlay
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && isOverlayActive) closeOverlay();
+    if (e.key === "Escape" && isOverlayActive) closeOverlay();
 });
 
 window.LearnMore = LearnMore;
 
 
-
+// ===================== LOAD CARDS =====================
 const cardTemplate = document.getElementById("cardTemplate").innerHTML;
 
 function loadCards() {
     Object.keys(CARD_LIST).forEach((cardName) => {
         const card = CARD_LIST[cardName];
+        const imageHTML = card.image
+            ? `<img src="${card.image}" class="img-fluid" alt="${card.title}">`
+            : "";
+
         const cardElement = document.createElement("div");
-        cardElement.innerHTML = cardTemplate.replaceAll("[[title]]", card.title).replaceAll("[[text]]", card.description).replaceAll("[[key]]", cardName);
+        cardElement.dataset.category = CARD_CATEGORIES[cardName] || "other";
+        cardElement.dataset.key = cardName;
+
+        cardElement.innerHTML = cardTemplate
+            .replaceAll("[[title]]", card.title)
+            .replaceAll("[[text]]", card.description)
+            .replaceAll("[[key]]", cardName)
+            .replaceAll("[[image]]", imageHTML);
+
         cardContainer.appendChild(cardElement);
     });
 }
+loadCards();
 
-loadCards();    
+
+// ===================== SEARCH =====================
+const searchInput = document.getElementById("searchInput");
+const searchClear = document.getElementById("searchClear");
+
+let activeCategory = "all";
+let activeSearch = "";
+
+function applyFilters() {
+    document.querySelectorAll("#cardContainer > div").forEach((el) => {
+        const key = el.dataset.key;
+        if (!key) return;
+        const card = CARD_LIST[key];
+        const category = el.dataset.category;
+
+        const matchesSearch = !activeSearch ||
+            card.title.toLowerCase().includes(activeSearch) ||
+            card.description.toLowerCase().includes(activeSearch);
+
+        const matchesCategory = activeCategory === "all" || category === activeCategory;
+
+        el.style.display = (matchesSearch && matchesCategory) ? "" : "none";
+    });
+}
+
+searchInput.addEventListener("input", () => {
+    activeSearch = searchInput.value.toLowerCase();
+    searchClear.classList.toggle("visible", activeSearch.length > 0);
+    applyFilters();
+});
+
+searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    activeSearch = "";
+    searchClear.classList.remove("visible");
+    applyFilters();
+});
+
+
+// ===================== CATEGORY FILTERS =====================
+document.getElementById("filterPills").addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-filter");
+    if (!btn) return;
+
+    document.querySelectorAll(".btn-filter").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeCategory = btn.dataset.category;
+    applyFilters();
+});
+
+
+// ===================== CHART =====================
+await window.loadChartJS();
+
+const canvas = document.getElementById('mentalHealthChart');
+
+function buildChart() {
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Any Mental Illness', 'Serious Mental Illness', 'Anxiety Disorders', 'Major Depression', 'PTSD', 'Bipolar Disorder', 'OCD'],
+            datasets: [{
+                data: [0, 0, 0, 0, 0, 0, 0],
+                backgroundColor: [
+                    'rgba(13,110,253,0.7)',
+                    'rgba(220,53,69,0.7)',
+                    'rgba(255,193,7,0.7)',
+                    'rgba(25,135,84,0.7)',
+                    'rgba(111,66,193,0.7)',
+                    'rgba(13,202,240,0.7)',
+                    'rgba(253,126,20,0.7)',
+                ],
+                borderWidth: 1,
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            responsive: true,
+            animation: { duration: 1200, easing: 'easeOutQuart' },
+            plugins: {
+                legend: { display: false },
+                tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y}M adults` } }
+            },
+            scales: {
+                y: { beginAtZero: true, ticks: { callback: val => val + 'M' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+                x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+            }
+        }
+    });
+
+    setTimeout(() => {
+        chart.data.datasets[0].data = [57.8, 14.2, 42.5, 21.0, 9.0, 6.0, 2.5];
+        chart.update('active');
+    }, 500);
+}
+
+buildChart();

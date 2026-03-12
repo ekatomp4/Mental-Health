@@ -1,0 +1,26 @@
+model User {
+    id String @id @default(uuid())
+
+    username String @unique
+    email    String @unique
+
+    password String
+
+    sessions Session[]
+
+    settings UserSetting?
+
+    messages Message[]
+
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
+}
+
+model UserSetting {
+    userId String @id
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    signedUpForNewsletter Boolean @default(false)
+    usernameColor         Color   @default(BLACK)
+}

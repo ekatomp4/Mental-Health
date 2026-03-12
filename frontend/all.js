@@ -200,7 +200,8 @@ async function loadPage(page) {
 
     pageLoaded[page.name] = true;
 
-    window.history.replaceState({}, "", page.paths?.[0] || "/");
+    window.history.pushState({}, "", page.paths?.[0] || "/");
+    // window.history.replaceState({}, "", page.paths?.[0] || "/");
     document.title = page.title ?? `${page.name} - MentalPanda`;
     document.body.scrollTop = document.documentElement.scrollTop = 0;
 
@@ -209,6 +210,7 @@ async function loadPage(page) {
   }
 }
 
+// KEEP for old code
 function loadPageByPath(path) {
   const pathname = fixPathname(path);
 
@@ -219,7 +221,29 @@ function loadPageByPath(path) {
   if (!route) return;
   loadPage(route);
 }
-window.loadPageByPath = loadPageByPath;
+
+// new loading function
+function loadPageByQueryOrPath() {
+  // Check ?page=name query param first (set by backend redirect)
+  const params = new URLSearchParams(window.location.search);
+  const pageQuery = params.get("page");
+  // console.log("pageQuery:", pageQuery); // check this in browser console
+
+
+  if (pageQuery) {
+    const route = window.MentalPanda.config.pages.find(
+      (page) => page.name.toLowerCase() === pageQuery.toLowerCase()
+    );
+    if (route) {
+      loadPage(route);
+      return;
+    }
+  }
+
+  // Fallback: match by pathname (e.g. /about)
+  loadPageByPath(window.location.pathname);
+}
+
 
 function createNavLink(entry) {
   const li = document.createElement("li");
@@ -246,7 +270,8 @@ document.addEventListener("DOMContentLoaded", function () {
     mainNavItems.appendChild(createNavLink(entry));
   });
 
-  loadPageByPath(window.location.pathname);
+  // loadPageByPath(window.location.pathname);
+  loadPageByQueryOrPath();
 });
 
 window.loadPage = loadPage;

@@ -140,3 +140,18 @@ button {
 .mw-none {
   margin-left:0 !important;
 }
+
+/* 988 is only a tappable link on mobile */
+.crisis-link {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .crisis-link {
+    color: #ffdd57;        /* makes it stand out on mobile */
+    text-decoration: underline;
+    pointer-events: auto;
+  }
+}
