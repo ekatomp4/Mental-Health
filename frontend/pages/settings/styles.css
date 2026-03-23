@@ -1,0 +1,127 @@
+.settings-hero {
+	background: linear-gradient(135deg, #339961 0%, #267a4d 58%, #173d2a 100%) !important;
+}
+
+.settings-kicker {
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	opacity: 0.78;
+}
+
+.settings-shell {
+	max-width: 980px;
+}
+
+.settings-card {
+	border-radius: 28px !important;
+	overflow: hidden;
+	background:
+		radial-gradient(circle at top right, rgba(51, 153, 97, 0.12), transparent 28%),
+		linear-gradient(180deg, #ffffff 0%, #f6fbf7 100%);
+}
+
+.settings-section {
+	padding: 1.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	border-radius: 22px;
+	background: rgba(255, 255, 255, 0.9);
+}
+
+.settings-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.85rem;
+	font-weight: 600;
+	color: #173d2a;
+}
+
+.settings-toggle .form-check-input {
+	width: 3rem;
+	height: 1.6rem;
+	margin: 0;
+	cursor: pointer;
+	background-color: #d6e8dd;
+	border-color: #b9d7c4;
+	box-shadow: none;
+}
+
+.settings-toggle .form-check-input:checked {
+	background-color: #339961;
+	border-color: #339961;
+}
+
+.settings-toggle .form-check-input:focus {
+	box-shadow: 0 0 0 0.2rem rgba(51, 153, 97, 0.18);
+	border-color: #339961;
+}
+
+#usernameColor {
+	border-radius: 16px;
+	border-color: rgba(23, 61, 42, 0.14);
+	padding-block: 0.9rem;
+	font-weight: 600;
+	box-shadow: none;
+}
+
+#usernameColor:focus {
+	border-color: #339961;
+	box-shadow: 0 0 0 0.2rem rgba(51, 153, 97, 0.18);
+}
+
+.settings-preview {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem 1.2rem;
+	border-radius: 18px;
+	background: #eef7f0;
+}
+
+.settings-preview-label {
+	font-size: 0.9rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #5a6d62;
+}
+
+.settings-preview-name {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: #111111;
+	text-transform: none;
+}
+
+.settings-actions .btn {
+	min-width: 180px;
+	border-radius: 999px;
+	font-weight: 700;
+}
+
+#settingsAlert {
+	border-radius: 16px;
+	border: 0;
+	padding: 1rem 1.1rem;
+}
+
+@media (max-width: 576px) {
+	.settings-card {
+		border-radius: 22px !important;
+	}
+
+	.settings-section {
+		padding: 1.1rem;
+	}
+
+	.settings-preview {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.settings-actions .btn {
+		width: 100%;
+	}
+}

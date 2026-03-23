@@ -1,26 +1,19 @@
-#results {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 1rem 3vh;
-    box-sizing: border-box;
+/*
+   Therapist Finder — Page Styles
+   */
+
+/* ── Bootstrap green override ── */
+:root {
+  --bs-primary:        #198754;
+  --bs-primary-rgb:    25, 135, 84;
 }
 
-.result {
-    border: 1px solid #ccc;
-    border-radius: 16px;
-    padding: 12px;
-    width: 50%;
-    margin-bottom: 12px;
-    background-color: #f9f9f9;
+/* ── Hero section ── */
+.hero {
+  background: linear-gradient(135deg, #198754 0%, #0f5132 100%);
 }
 
-.result a {
-    margin-top: 10px;
-}
-
+/* ── Panda image ── */
 .pandaCare {
     position: relative;
     display: inline-block;
@@ -59,4 +52,129 @@
         width: 70vw;
     }
 }
-/* color testing for home page idk if its working becaue I cant see it :)" */
+
+/* ── Results container ── */
+#results {
+  width: 100%;
+}
+
+/* ── Provider result cards ── */
+.result-card {
+  background-color: #e8f5ee;
+  border: 1px solid #b7dfca;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Search status text ── */
+#search-status {
+  min-height: 1.5rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* ── Loading spinner ── */
+.spinner-wrapper {
+  display: none;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* ── Green button overrides ── */
+.btn-primary {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-primary:hover {
+  background-color: #157347;
+  border-color: #146c43;
+}
+
+.btn-outline-primary {
+  color: #198754;
+  border-color: #198754;
+}
+
+.btn-outline-primary:hover {
+  background-color: #198754;
+  color: #fff;
+}
+
+.text-primary {
+  color: #198754 !important;
+}
+
+.bg-primary {
+  background-color: #198754 !important;
+}
+
+
+
+/* original css#results {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 3vh;
+    box-sizing: border-box;
+}
+
+.result {
+    border: 1px solid #ccc;
+    border-radius: 16px;
+    padding: 12px;
+    width: 50%;
+    margin-bottom: 12px;
+    background-color: #f9f9f9;
+}
+
+.result a {
+    margin-top: 10px;
+}
+
+.pandaCare {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pandaCare > div {
+    position: relative;
+    width: 20vw;
+     height: 100%; this is a comment
+    aspect-ratio: 1;
+    background: url("../../media/images/pandas/panda-laptop.png");
+     this is a comment  background: url("https://i5.walmartimages.com/asr/b3d573c2-fb35-4e3b-bd0d-ee30df8243c5.f9a884c1b693ab4ee1a3e2da24e069a1.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF") no-repeat center;
+    background-size: contain;
+}
+
+.pandaCare > div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bs-body-bg));
+    pointer-events: none;
+    border-radius: inherit;
+    /* opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .pandaCare > div {
+        width: 70vw;
+    }
+}
+ color testing for home page idk if its working becaue I cant see it :)" */

@@ -6,11 +6,12 @@ model User {
 
     password String
 
+    ipId String
+    ip   IP     @relation(fields: [ipId], references: [id])
+
     sessions Session[]
 
     settings UserSetting?
-
-    messages Message[]
 
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt

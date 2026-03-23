@@ -91,7 +91,7 @@ appraisal rather than logical reasoning.
 
     TraumaAndStressorRelatedDisorders: {
         title: "Trauma and Stressor-Related Disorders",
-        image:"media/conditions/TraumaStressPanda.png",
+        image:"media/conditions/TruamaStressPanda.png",
         description: `
 These disorders arise following exposure to traumatic or highly stressful events
 such as violence, disaster, abuse, or prolonged adversity.

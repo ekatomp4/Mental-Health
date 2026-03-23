@@ -384,7 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Message: 'Message',
+  IP: 'IP',
   Session: 'Session',
   User: 'User',
   UserSetting: 'UserSetting'
@@ -403,81 +403,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "message" | "session" | "user" | "userSetting"
+    modelProps: "iP" | "session" | "user" | "userSetting"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Message: {
-      payload: Prisma.$MessagePayload<ExtArgs>
-      fields: Prisma.MessageFieldRefs
+    IP: {
+      payload: Prisma.$IPPayload<ExtArgs>
+      fields: Prisma.IPFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.MessageFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          args: Prisma.IPFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         findFirst: {
-          args: Prisma.MessageFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+          args: Prisma.IPFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         findMany: {
-          args: Prisma.MessageFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          args: Prisma.IPFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>[]
         }
         create: {
-          args: Prisma.MessageCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         createMany: {
-          args: Prisma.MessageCreateManyArgs<ExtArgs>
+          args: Prisma.IPCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          args: Prisma.IPCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>[]
         }
         delete: {
-          args: Prisma.MessageDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         update: {
-          args: Prisma.MessageUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         deleteMany: {
-          args: Prisma.MessageDeleteManyArgs<ExtArgs>
+          args: Prisma.IPDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.MessageUpdateManyArgs<ExtArgs>
+          args: Prisma.IPUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+          args: Prisma.IPUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>[]
         }
         upsert: {
-          args: Prisma.MessageUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+          args: Prisma.IPUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$IPPayload>
         }
         aggregate: {
-          args: Prisma.MessageAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMessage>
+          args: Prisma.IPAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateIP>
         }
         groupBy: {
-          args: Prisma.MessageGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MessageGroupByOutputType>[]
+          args: Prisma.IPGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.IPGroupByOutputType>[]
         }
         count: {
-          args: Prisma.MessageCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
+          args: Prisma.IPCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.IPCountAggregateOutputType> | number
         }
       }
     }
@@ -742,21 +742,20 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MessageScalarFieldEnum = {
+export const IPScalarFieldEnum = {
   id: 'id',
-  content: 'content',
-  senderId: 'senderId',
+  address: 'address',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  updatedAt: 'updatedAt'
 } as const
 
-export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+export type IPScalarFieldEnum = (typeof IPScalarFieldEnum)[keyof typeof IPScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  ipId: 'ipId',
   createdAt: 'createdAt',
   expiresAt: 'expiresAt'
 } as const
@@ -769,6 +768,7 @@ export const UserScalarFieldEnum = {
   username: 'username',
   email: 'email',
   password: 'password',
+  ipId: 'ipId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -973,7 +973,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  message?: Prisma.MessageOmit
+  iP?: Prisma.IPOmit
   session?: Prisma.SessionOmit
   user?: Prisma.UserOmit
   userSetting?: Prisma.UserSettingOmit

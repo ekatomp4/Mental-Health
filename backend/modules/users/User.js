@@ -1,6 +1,17 @@
 import bcrypt from "bcrypt";
 
-import prisma from "../../prisma";
+import prisma from "../prisma";
+import IPs from "../ips/IPs";
+
+const USERNAME_COLORS = new Set([
+	"RED",
+	"ORANGE",
+	"YELLOW",
+	"GREEN",
+	"BLUE",
+	"PURPLE",
+	"BLACK"
+]);
 
 class User {
 	static async getById(id) {
@@ -16,7 +27,32 @@ class User {
 		});
 	}
 
-	static async create({ username, email, password }) {
+	static async getByEmail(email) {
+		if (!email || typeof email !== "string") {
+			return null;
+		}
+
+		return await prisma.user.findUnique({
+			where: { email: email.toLowerCase() }
+		});
+	}
+
+	static async getByUsername(username) {
+		if (!username || typeof username !== "string") {
+			return null;
+		}
+
+		return await prisma.user.findFirst({
+			where: {
+				username: {
+					equals: username,
+					mode: "insensitive"
+				}
+			}
+		});
+	}
+
+	static async create({ username, email, password, ip }) {
 		if (!username || !email || !password) {
 			return null;
 		}
@@ -24,15 +60,21 @@ class User {
 		const passwordHash = await bcrypt.hash(password, 10);
 
 		return await prisma.$transaction(async (prisma) => {
+			const ipAddress = await IPs.getOrCreate(ip);
+			if (!ipAddress) {
+				return null;
+			}
+
 			const user = await prisma.user.create({
 				data: {
 					username,
-					email,
-					password: passwordHash
+					email: email.toLowerCase(),
+					password: passwordHash,
+					ipId: ipAddress.id
 				}
 			});
 
-			await prisma.userSettings.create({
+			await prisma.userSetting.create({
 				data: {
 					userId: user.id
 				}
@@ -58,6 +100,35 @@ class User {
 
 			throw error;
 		}
+	}
+
+	static async changeSetting(userId, settingKey, settingValue) {
+		const validSettings = {
+			signedUpForNewsletter: "boolean",
+			usernameColor: "string"
+		};
+
+		if (!validSettings[settingKey]) {
+			throw new Error("Invalid setting key");
+		}
+
+		if (typeof settingValue !== validSettings[settingKey]) {
+			throw new Error("Invalid setting value type");
+		}
+
+		if (settingKey === "usernameColor" && !USERNAME_COLORS.has(settingValue)) {
+			throw new Error("Invalid username color");
+		}
+
+		const user = await this.getById(userId);
+		if (!user) {
+			throw new Error("User not found");
+		}
+
+		return await prisma.userSetting.update({
+			where: { userId },
+			data: { [settingKey]: settingValue }
+		});
 	}
 }
 

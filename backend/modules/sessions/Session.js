@@ -1,14 +1,22 @@
-import prisma from "../../prisma";
+import prisma from "../prisma";
+import IPs from "../ips/IPs";
 
 class Session {
-	static async create(userId) {
+	static async create(userId, ip) {
 		if (!userId || typeof userId !== "string") {
+			return null;
+		}
+
+		const ipAddress = await IPs.getOrCreate(ip);
+		if (!ipAddress) {
 			return null;
 		}
 
 		return prisma.session.create({
 			data: {
-				userId
+				userId,
+				ipId: ipAddress.id,
+				expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
 			}
 		});
 	}
@@ -21,7 +29,11 @@ class Session {
 		return prisma.session.findUnique({
 			where: { id },
 			include: {
-				user: true
+				user: {
+					include: {
+						settings: true
+					}
+				}
 			}
 		});
 	}

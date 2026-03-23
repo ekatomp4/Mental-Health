@@ -1,0 +1,46 @@
+.auth-hero {
+    background: linear-gradient(135deg, #339961 0%, #267a4d 100%) !important;
+}
+
+.nav-pills {
+    --bs-nav-pills-link-active-bg: #339961;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0 !important;
+    color: #339961 !important;
+    background: #fff;
+    border-bottom: 2px solid transparent;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.nav-pills .nav-link.active {
+    background: #339961 !important;
+    color: #fff !important;
+    border-bottom-color: #339961;
+}
+
+.card {
+    border-radius: 16px !important;
+}
+
+.toggle-pw {
+    border-left: 0;
+}
+
+.btn-primary {
+    background-color: #339961 !important;
+    border-color: #339961 !important;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+    background-color: #267a4d !important;
+    border-color: #267a4d !important;
+}
+
+#authAlert {
+    border-radius: 12px;
+}

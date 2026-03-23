@@ -42,6 +42,22 @@ const pages = [
 		title: "MentalPanda Chat",
 		hasCss: false,
 		hasJs: true,
+	},
+	{
+		name: "Auth",
+		paths: ["/auth", "/login", "/register"],
+		pagePath: "/pages/auth",
+		title: "Sign In - MentalPanda",
+		hasCss: true,
+		hasJs: true,
+	},
+	{
+		name: "Settings",
+		paths: ["/settings"],
+		pagePath: "/pages/settings",
+		title: "Settings - MentalPanda",
+		hasCss: true,
+		hasJs: true,
 	}
 ];
 

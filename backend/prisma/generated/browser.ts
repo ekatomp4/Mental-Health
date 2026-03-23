@@ -18,10 +18,10 @@ export { Prisma }
 export * as $Enums from './enums.ts'
 export * from './enums.ts';
 /**
- * Model Message
+ * Model IP
  * 
  */
-export type Message = Prisma.MessageModel
+export type IP = Prisma.IPModel
 /**
  * Model Session
  * 

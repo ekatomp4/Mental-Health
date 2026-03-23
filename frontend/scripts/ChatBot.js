@@ -5,7 +5,7 @@ How messages need to be saved:
 or
 "message"
 */
-// Note - Testing 
+// Note - Testing
 // modules are ran after normal scripts
 // modules do not share variables with other files
 // you can import and export variables and functions in modules
@@ -108,13 +108,20 @@ function removeTypingIndicator() {
 /* TEMP LOGIC FOR TESTING AI - "Work with evan for backend stuff" */
 
 async function sendMessageToBackend(message) {
-    const res = await fetch("/api/sendchatbotmessage", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message })
-    });
-    const data = await res.json();
-    return data.response;
+    // const res = await fetch("/api/send-chatbot-message", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({ message })
+    // });
+    // const data = await res.json();
+    // return data.response;
+	// use window.MentalPanda.fetch which includes session handling
+	const res = await window.MentalPanda.fetch("/api/send-chatbot-message", {
+		method: "POST",
+		body: { message }
+	});
+	const data = await res.json();
+	return data.response;
 }
 
 async function generateAIResponse(userMessage) {

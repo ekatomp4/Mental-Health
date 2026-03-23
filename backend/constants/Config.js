@@ -31,7 +31,11 @@ const Config = Object.freeze({
 		"/blogs": "frontend/pages/blogs/index.html",
 		"/conditions": "frontend/pages/conditions/index.html",
 		"/find": "frontend/pages/find/index.html",
-		"/chat": "frontend/pages/chat/index.html"
+		"/chat": "frontend/pages/chat/index.html",
+		"/auth": "frontend/pages/auth/index.html",
+		"/login": "frontend/pages/auth/index.html",
+		"/register": "frontend/pages/auth/index.html",
+		"/settings": "frontend/pages/settings/index.html"
 	}
 });
 

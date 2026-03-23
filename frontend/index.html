@@ -30,9 +30,22 @@
     }
     window.loadChartJS = loadChartJS;
   </script>
-  
+
+  <script>
+	async function loadSocketIO() {
+		return new Promise((resolve) => {
+			if (window.io) return resolve(); // already loaded
+			const script = document.createElement('script');
+			script.src = 'https://cdn.socket.io/4.5.4/socket.io.min.js';
+			script.onload = resolve;
+			document.head.appendChild(script);
+		});
+	}
+	window.loadSocketIO = loadSocketIO;
+  </script>
+
   <script src="/all.js" type="module"></script>
-  
+
 
   <!--ChatBot-->
   <!-- <script> window.chtlConfig = { chatbotId: "4432428389" } </script>
@@ -51,6 +64,12 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="mainNavItems"></ul>
+        <button id="navbarUser" class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center ms-lg-3" type="button" aria-label="Account" style="width: 42px; height: 42px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            <path d="M14 14s-1-4-6-4-6 4-6 4 1 1 6 1 6-1 6-1z" />
+          </svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -84,7 +103,7 @@
       transition: .3s;
       transform: scale(1.05);
     }
-  
+
     #chatWindow {
       position: fixed;
       bottom: 5rem;
@@ -99,7 +118,7 @@
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-  
+
     #chatHeader {
       background: #93d38f;
       color: white;
@@ -107,26 +126,26 @@
       text-align: center;
       font-weight: bold;
     }
-  
+
     #chatMessages {
       flex: 1;
       padding: 0.5rem;
       overflow-y: auto;
       font-size: 0.9rem;
     }
-  
+
     #chatInputContainer {
       display: flex;
       border-top: 1px solid #ccc;
     }
-  
+
     #chatInput {
       flex: 1;
       border: none;
       padding: 0.5rem;
       outline: none;
     }
-  
+
     #chatSend {
       padding: 0 1rem;
       background: #B3E8B0;
@@ -134,16 +153,16 @@
       border: none;
       cursor: pointer;
     }
-  
+
     .chatMessage {
       margin-bottom: 0.5rem;
     }
-  
+
     .userMessage {
       text-align: right;
       font-weight: bold;
     }
-  
+
     .botMessage {
       text-align: left;
       color: gray;
@@ -154,7 +173,7 @@
     align-items: center;
     gap: 5px;
     padding: 12px 16px;
-    } 
+    }
 
   .typingIndicator span {
     width: 7px;
@@ -173,14 +192,14 @@
       40%           { transform: translateY(-6px); }
   }
   </style>
-  
+
   <div id="chatbot">
     <img id="chatbotToggle" src="./media/images/pandas/panda-chatting.png"></img>
-  
+
     <div id="chatWindow">
       <div id="chatHeader">ChatBot</div>
       <div id="chatMessages">
-        <div class="chatMessage botMessage">Hello! I am your mock chatbot.</div>
+        <div class="chatMessage botMessage">Hello! I am your helpful assistant.</div>
       </div>
       <div id="chatInputContainer">
         <input id="chatInput" type="text" placeholder="Type a message..." />

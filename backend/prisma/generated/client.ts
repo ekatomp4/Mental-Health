@@ -31,8 +31,8 @@ export * from "./enums.ts"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Messages
- * const messages = await prisma.message.findMany()
+ * // Fetch zero or more IPS
+ * const iPS = await prisma.iP.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,10 +42,10 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Message
+ * Model IP
  * 
  */
-export type Message = Prisma.MessageModel
+export type IP = Prisma.IPModel
 /**
  * Model Session
  * 

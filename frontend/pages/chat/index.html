@@ -1,29 +1,36 @@
-<section class="hero bg-primary text-white">
-    <div class="container text-center py-5">
-        <h1 class="display-4 fw-bold">Chat with Others</h1>
-    </div>
-</section>
+<style>
+    .chat-page {
+        height: calc(100vh - 140px);
+        min-height: 420px;
+        padding: 1rem;
+    }
 
-<div class="container-fluid my-4 h-100">
-    <div class="row g-3 chat-root h-100 p-5 py-3">
+    .chat-panel {
+        height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+    }
 
-        <aside class="col-md-3 h-100 col-lg-2">
-            <div class="card h-100 shadow-sm">
-                <div class="card-header fw-semibold">Online</div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">You</li>
-                    <li class="list-group-item">Alex</li>
-                    <li class="list-group-item">Jamie</li>
-                </ul>
-            </div>
-        </aside>
+    #chatMessages {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 
-        <main class="col-md-9 h-100 col-lg-10">
-            <div class="card h-100 shadow-sm d-flex flex-column">
+    @media (max-width: 768px) {
+        .chat-page {
+            height: calc(100vh - 120px);
+            padding: 0.5rem;
+        }
+    }
+</style>
 
+<div class="container-fluid chat-page">
+    <div class="row h-100 g-0">
+        <main class="col-12 h-100">
+            <div class="card chat-panel shadow-sm d-flex flex-column h-100">
                 <div class="card-header fw-semibold">Global Chat</div>
 
-                <div class="card-body flex-grow-1 overflow-auto" id="chatMessages"></div>
+                <div class="card-body flex-grow-1" id="chatMessages"></div>
 
                 <div class="card-footer">
                     <div class="d-flex gap-2">
@@ -33,9 +40,7 @@
                         </button>
                     </div>
                 </div>
-
             </div>
         </main>
-
     </div>
 </div>

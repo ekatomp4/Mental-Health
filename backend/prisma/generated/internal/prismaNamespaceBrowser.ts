@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Message: 'Message',
+  IP: 'IP',
   Session: 'Session',
   User: 'User',
   UserSetting: 'UserSetting'
@@ -73,21 +73,20 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MessageScalarFieldEnum = {
+export const IPScalarFieldEnum = {
   id: 'id',
-  content: 'content',
-  senderId: 'senderId',
+  address: 'address',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  deletedAt: 'deletedAt'
+  updatedAt: 'updatedAt'
 } as const
 
-export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+export type IPScalarFieldEnum = (typeof IPScalarFieldEnum)[keyof typeof IPScalarFieldEnum]
 
 
 export const SessionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  ipId: 'ipId',
   createdAt: 'createdAt',
   expiresAt: 'expiresAt'
 } as const
@@ -100,6 +99,7 @@ export const UserScalarFieldEnum = {
   username: 'username',
   email: 'email',
   password: 'password',
+  ipId: 'ipId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

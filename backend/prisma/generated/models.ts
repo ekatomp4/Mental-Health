@@ -8,7 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Message.ts'
+export type * from './models/IP.ts'
 export type * from './models/Session.ts'
 export type * from './models/User.ts'
 export type * from './models/UserSetting.ts'
